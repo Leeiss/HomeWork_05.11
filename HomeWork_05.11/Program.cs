@@ -1,59 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Home_work;
 
-namespace HomeWork
+partial class Program
 {
-    class Борис { }
-    class Рашид : Борис { } 
-    class Лукас : Рашид { }
-    class Buh : Лукас { }
-    class ОИльхам : Борис { } 
-    class Оркадий : ОИльхам { }
-    class Володя : Оркадий { }
-    class Ильшат : Володя { } 
-    class Иваныч : Ильшат { }
-    class Илья : Иваныч { }
-    class Витя : Иваныч { }
-    class Женя : Иваныч { }
-    class Сергей : Володя { }
-    class Ляйсан : Сергей { }
-    class Марат : Ляйсан { }
-    class Дина : Ляйсан { }
-    class Ильдар : Ляйсан { }
-    class Антон : Ляйсан { }
-    class Program
+    internal static void Main(String[] args)
     {
-        static void Otvet(Type a, Type b, string name)
+        string[] tasks = { "Разработать мобильное приложение", "Сделать алгоритм для видеохостинга",
+            "Обновить устаревшее ПО", "Сделать сайт для заказчика" };
+        StreamReader info= new StreamReader(@"C:\Users\farra\source\repos\HomeWork_05.11\HomeWork_05.11\staff.txt");
+        Console.WriteLine(info.ReadToEnd());
+        Console.WriteLine($"Список задач перед компанией: \n 1 - {tasks[0]} \n 2 - {tasks[1]} \n 3 - {tasks[2]} \n " +
+            $"4 - {tasks[3]} \n");
+        Console.WriteLine("Введите номер задачи, которую хотите дать одному из работников компании");
+        string task = tasks[int.Parse(Console.ReadLine()) - 1];
+        Console.WriteLine($"Кому дать задачу <<{task}>>");
+        var person1 = Staff.ReturnPerson(Console.ReadLine());
+        Console.WriteLine($"Кому {person1.name} перенаправит задачу?");
+        var person2 = Staff.ReturnPerson(Console.ReadLine());
+
+
+        Console.WriteLine($"\n{person1.name} дает задачу <<{task}>>, которую исполнит {person2.name} \n");
+        if ((person2.number - 1 == person1.number)&&((person1.department== person2.department)||((person1.department== "superiors")&&(person2.department == "system")) || ((person1.department == "superiors") && (person2.department == "development"))))
         {
-            if (a.IsSubclassOf(b)) 
-            { 
-                Console.WriteLine($"{name} принимает задачу"); 
-            }
-            else
-            {
-                Console.WriteLine($"{name} не принимает задачу");
-            }
-            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{person2.name} берет эту задачу");
+            Console.ResetColor();
         }
-        static void Main(string[] args)
+        else
         {
-            Console.Write("Введите имя человека, который дает задачу: ");
-            string guarantor = Console.ReadLine();
-            Console.Write("Введите имя человека, которому дают задачу: ");
-            string performer = Console.ReadLine();
-            Console.Write("Введите задачу: ");
-            string C1 = Console.ReadLine();
-            Type A = Type.GetType("HomeWork" + "." + guarantor, false, true); 
-            Type B = Type.GetType("HomeWork" + "." + performer, false, true);
-            Console.WriteLine($"От рабонитка {guarantor} дана задача {C1}  для работника {performer}.");
-            Otvet(B, A, performer);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{person2.name} не берет эту задачу");
+            Console.ResetColor();
         }
     }
 }
+
 

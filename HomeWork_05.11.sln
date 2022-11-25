@@ -5,7 +5,14 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_05.11", "HomeWork_05.11\HomeWork_05.11.csproj", "{1D46C440-4F59-4096-910D-5547E43596DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tumakov_05.11", "Tumakov_05.11\Tumakov_05.11.csproj", "{B09694D3-598C-477E-A523-D58AE4B43401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tumakov_05.11", "Tumakov_05.11\Tumakov_05.11.csproj", "{B09694D3-598C-477E-A523-D58AE4B43401}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{05BDDBC2-4558-4DD7-B547-AC1C526143E2}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+		TextFile2.txt = TextFile2.txt
+		TextFile3.txt = TextFile3.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
